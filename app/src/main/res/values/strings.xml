@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Play Install Referrer Library Sample</string>
+
+    <string name="response_ok">Referrer URL: %1$s\n\nReferrer click timestamp: %2$s\n\nReferrer install timestamp: %3$s</string>
+    <string name="response_not_supported">responseCode unsupported</string>
+    <string name="response_unavailable">responseCode unavailable</string>
+    <string name="response_not_found">responseCode not found</string>
+</resources>
