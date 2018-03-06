@@ -1,5 +1,6 @@
 package org.mightyfrog.android.playinstallreferrerlibrarysample
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity(), InstallReferrerStateListener {
     private lateinit var referrerClient: InstallReferrerClient
 
     companion object {
-        val TAG = "Install Referrer"
+        private const val TAG = "Install Referrer"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +51,7 @@ class MainActivity : AppCompatActivity(), InstallReferrerStateListener {
         referrerClient.endConnection()
     }
 
+    @SuppressLint("LogNotTimber")
     override fun onInstallReferrerServiceDisconnected() {
         Log.e(TAG, "Install referrer disconnected.")
     }
