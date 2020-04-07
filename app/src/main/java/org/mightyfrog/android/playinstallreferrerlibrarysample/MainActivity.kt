@@ -2,12 +2,13 @@ package org.mightyfrog.android.playinstallreferrerlibrarysample
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.android.installreferrer.api.InstallReferrerClient
 import com.android.installreferrer.api.InstallReferrerStateListener
-import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
+import kotlinx.android.synthetic.main.activity_main.textView
+import kotlinx.android.synthetic.main.activity_main.toolbar
+import java.util.Date
 
 /**
  * https://android-developers.googleblog.com/2017/11/google-play-referrer-api-track-and.html
@@ -36,15 +37,18 @@ class MainActivity : AppCompatActivity(), InstallReferrerStateListener {
         when (responseCode) {
             InstallReferrerClient.InstallReferrerResponse.OK -> {
                 referrerClient.installReferrer.apply {
-                    textView.text = getString(R.string.response_ok, installReferrer, Date(referrerClickTimestampSeconds), Date(installBeginTimestampSeconds))
+                    textView.text = getString(
+                        R.string.response_ok,
+                        installReferrer,
+                        Date(referrerClickTimestampSeconds),
+                        Date(installBeginTimestampSeconds)
+                    )
                 }
             }
-            InstallReferrerClient.InstallReferrerResponse.FEATURE_NOT_SUPPORTED -> {
+            InstallReferrerClient.InstallReferrerResponse.FEATURE_NOT_SUPPORTED ->
                 textView.text = getString(R.string.response_not_supported)
-            }
-            InstallReferrerClient.InstallReferrerResponse.SERVICE_UNAVAILABLE -> {
+            InstallReferrerClient.InstallReferrerResponse.SERVICE_UNAVAILABLE ->
                 textView.text = getString(R.string.response_unavailable)
-            }
             else -> textView.text = getString(R.string.response_not_found)
         }
 
@@ -53,6 +57,6 @@ class MainActivity : AppCompatActivity(), InstallReferrerStateListener {
 
     @SuppressLint("LogNotTimber")
     override fun onInstallReferrerServiceDisconnected() {
-        Log.e(TAG, "Install referrer disconnected.")
+        Log.d(TAG, "Install referrer disconnected.")
     }
 }
