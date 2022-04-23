@@ -20,10 +20,6 @@ class MainActivity : AppCompatActivity(), InstallReferrerStateListener {
 
     private lateinit var referrerClient: InstallReferrerClient
 
-    companion object {
-        private const val TAG = "Install Referrer"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -58,5 +54,9 @@ class MainActivity : AppCompatActivity(), InstallReferrerStateListener {
     @SuppressLint("LogNotTimber")
     override fun onInstallReferrerServiceDisconnected() {
         Log.d(TAG, "Install referrer disconnected.")
+    }
+
+    companion object {
+        private const val TAG = "Install Referrer"
     }
 }
